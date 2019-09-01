@@ -1,17 +1,22 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import moment from 'moment';
 
 export default function AccelerationItem({ item }) {
+  const NO_IMAGE = 'http://denrakaev.com/wp-content/uploads/2015/03/no-image.png'
+
   return (
     <View style={styles.container}>
       <View style={styles.box}>
         <View>
-          <Image source={{ uri: item.banner_url }} style={styles.image} />
+          {
+            item.banner_url ? <Image source={{ uri: item.banner_url }} style={styles.image} /> : <Image source={{ uri: NO_IMAGE }} style={styles.image} />
+          }
         </View>
         <View style={styles.boxContent}>
           <Text style={styles.boxContentTitle}>{item.name}</Text>
           <Text style={styles.boxContentLocation}>{item.location}</Text>
-          <Text style={styles.boxContentDate}>{item.start_at}</Text>
+          <Text style={styles.boxContentDate}>{moment(item.subscription_finish_at).format('DD/MM/YYYY')}</Text>
         </View>
       </View>
     </View>

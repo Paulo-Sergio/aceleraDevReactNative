@@ -96,27 +96,28 @@ export default function Acceleration() {
         <Text style={styles.title}>Acelerações</Text>
       </View>
 
-      <View>
-        <AccelerationItem item={accelerations[0]} />
-        <AccelerationItem item={accelerations[1]} />
-        <AccelerationItem item={accelerations[2]} />
-        <AccelerationItem item={accelerations[3]} />
-        <AccelerationItem item={accelerations[4]} />
-        <AccelerationItem item={accelerations[5]} />
-      </View>
+      <FlatList
+        data={accelerations}
+        renderItem={
+          ({ item, index }) =>
+            <AccelerationItem item={item} index={index} key={index} />
+        }
+        keyExtractor={(item, index) => index.toString()}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
-    height: 120,
+    height: 100,
     borderBottomColor: '#7800ff',
     borderBottomWidth: 2,
     marginBottom: 30,
   },
   image: {
-    height: 150
+    height: 115,
+    width: 300
   },
   title: {
     paddingLeft: 10,
