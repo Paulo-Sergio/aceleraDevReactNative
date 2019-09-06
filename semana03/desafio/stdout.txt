@@ -1,0 +1,4 @@
+
+> @ test C:\Users\paulo.franca\codenation\react-native-2
+> jest --env=jsdom
+
